@@ -1,78 +1,92 @@
-# 📊 Trader Performance vs Market Sentiment Analysis
+# Trader Performance vs Market Sentiment
 
-## 🔹 Objective
-The goal of this project is to analyze how market sentiment (Fear/Greed) impacts trader behavior and performance on Hyperliquid. The analysis aims to uncover patterns that can help design better trading strategies.
+## Overview
+In this project, I analyzed how market sentiment (Fear and Greed) affects trader behavior and performance using real trading data from Hyperliquid.
 
----
-
-## 🔹 Datasets Used
-1. Bitcoin Market Sentiment Dataset  
-   - Columns: timestamp, value, classification, date  
-
-2. Historical Trader Data  
-   - Includes: Account, Execution Price, Size_USD, Side, Timestamp, Closed_PnL, etc.
+The main goal was to understand whether traders behave differently during Fear vs Greed conditions and how that impacts their profitability.
 
 ---
 
-## 🔹 Methodology
+## Datasets Used
+I used two datasets:
+
+1. **Market Sentiment Data**
+   - Contains daily sentiment classification (Fear, Greed, Extreme Fear, etc.)
+
+2. **Trader Data**
+   - Includes trade details like account, trade size, price, side, timestamp, and PnL
+
+---
+
+## What I Did
 
 ### 1. Data Cleaning
-- Removed inconsistencies in column names  
-- Converted timestamps to datetime format  
-- Created a common `date` column  
-- Merged both datasets on date  
+- Renamed columns for easier handling
+- Converted timestamps into proper datetime format
+- Created a common `date` column in both datasets
+- Merged both datasets on date
 
-### 2. Feature Engineering
-- Created `win` column (profit/loss indicator)  
-- Calculated:
-  - Average PnL  
-  - Win rate  
-  - Trade size  
-  - Trade frequency  
+---
+
+### 2. Feature Creation
+I created some useful metrics:
+- **Win column** (whether trade was profitable or not)
+- **Average PnL**
+- **Win rate**
+- **Trade size (Size_USD)**
+- **Trade count**
+
+---
 
 ### 3. Analysis
-- Compared trader performance across sentiment categories  
-- Analyzed behavior changes (trade size, activity, etc.)  
-- Visualized results using seaborn and matplotlib  
+
+I compared trader behavior across different sentiment categories.
+
+#### Key observations:
+- Average PnL changes based on sentiment
+- Win rate also varies with sentiment
+- Trade size shows how risky traders are under different conditions
+
+I also used graphs (boxplots and bar charts) to visualize the patterns.
 
 ---
 
-## 🔹 Key Insights
+## Key Insights
 
-1. **Higher Profitability in Greed Markets**  
-   Traders achieve the highest average PnL during Extreme Greed periods, indicating favorable conditions for profitable trades.
+1. **Better performance during Greed**
+   Traders achieve higher profits and better win rates during Extreme Greed conditions.
 
-2. **Win Rate Follows Market Sentiment**  
-   Win rates are highest in Extreme Greed and lowest in Extreme Fear, showing that traders struggle in bearish conditions.
+2. **Poor performance during Fear**
+   Both PnL and win rate drop during Fear and Extreme Fear phases.
 
-3. **Risk-Taking Increases During Fear**  
-   Traders take significantly larger positions during Fear periods, suggesting emotional or recovery-driven trading behavior.
-
----
-
-## 🔹 Strategy Recommendations
-
-1. **Reduce Risk During Fear Periods**  
-   Traders should limit position sizes as larger trades during Fear lead to lower success rates.
-
-2. **Leverage Favorable Conditions in Greed**  
-   Higher participation during Greed phases can improve profitability, but overtrading should be avoided.
+3. **Higher risk-taking during Fear**
+   Surprisingly, traders take larger positions during Fear periods, which may indicate emotional or recovery-driven trading.
 
 ---
 
-## 🔹 Tools Used
-- Python (Pandas, NumPy)
-- Data Visualization (Seaborn, Matplotlib)
+## Strategy Suggestions
+
+- During Fear periods, traders should reduce position sizes to control losses.
+- During Greed phases, traders can participate more, but should avoid overtrading.
+- Risk management should be stricter when the market sentiment is negative.
+
+---
+
+## Tools Used
+- Python
+- Pandas
+- Matplotlib
+- Seaborn
 - Google Colab
 
 ---
 
-## 🔹 How to Run
-1. Open the notebook in Google Colab  
-2. Upload datasets  
-3. Run all cells sequentially  
+## How to Run
+1. Open the notebook in Google Colab
+2. Upload the datasets
+3. Run all cells step by step
 
 ---
 
-## 🔹 Conclusion
-Market sentiment plays a critical role in trader performance and behavior. Understanding these patterns can help traders optimize strategies and manage risk effectively.
+## Final Thoughts
+This analysis shows that market sentiment has a clear impact on trader behavior. Understanding these patterns can help traders make better decisions and manage risk more effectively.
